@@ -2,13 +2,14 @@
 # Created by https://www.gitignore.io/api/java,maven,gradle,elixir,python,intellij
 
 ### Elixir ###
-/_build
-/cover
-/deps
-/doc
-erl_crash.dump
-*.ez
-
+/microservices/rest_endpoint/_build
+/microservices/rest_endpoint/cover
+/microservices/rest_endpoint/deps
+/microservices/rest_endpoint/doc
+/microservices/rest_endpoint/erl_crash.dump
+/microservices/rest_endpoint/*.ez
+/microservices/rest_endpoint/node_modules
+/microservices/rest_endpoint/priv/static
 ### Elixir Patch ###
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
