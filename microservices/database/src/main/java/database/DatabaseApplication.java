@@ -11,6 +11,4 @@ public class DatabaseApplication {
 		dbController.prepareIndex();
 		SpringApplication.run(DatabaseApplication.class, args);
 	}
-
-
 }
