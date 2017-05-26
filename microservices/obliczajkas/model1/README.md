@@ -1,0 +1,2 @@
+# Obliczajka – model1
+
