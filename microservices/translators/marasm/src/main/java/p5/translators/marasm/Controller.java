@@ -1,12 +1,10 @@
 package p5.translators.marasm;
 
-import p5.Crodis;
-import p5.translators.Bbox;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.p5.commons.crodis.Crodis;
+import org.p5.commons.crodis.Item;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,15 +23,15 @@ public class Controller {
         Map<String, Float> conditions = new HashMap<>();
 
         // AGH UST
-        conditions.put(Crodis.Item.CONDITION_TEMPERATURE, 44f);
+        conditions.put(Item.CONDITION_TEMPERATURE, 44f);
         crodis.addItem(50.068f ,19.912f, 10f, conditions);
 
         // Ruczaj
-        conditions.put(Crodis.Item.CONDITION_TEMPERATURE, -42f);
+        conditions.put(Item.CONDITION_TEMPERATURE, -42f);
         crodis.addItem(50.030f, 19.908f, 10f, conditions);
 
         // Nowa Huta
-        conditions.put(Crodis.Item.CONDITION_TEMPERATURE, 0f);
+        conditions.put(Item.CONDITION_TEMPERATURE, 0f);
         crodis.addItem(50.072f, 20.038f, 10f, conditions);
 
         return crodis;

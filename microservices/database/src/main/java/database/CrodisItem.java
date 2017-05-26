@@ -1,6 +1,8 @@
-package database; /**
+package database;
+/**
  * Created by Mefju on 25.05.2017.
  */
+import org.p5.commons.crodis.Item;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -19,7 +21,7 @@ public class CrodisItem {
 
     CrodisItem(){}
 
-    CrodisItem(String source, Crodis.Item item){
+    CrodisItem(String source, Item item){
         this.source = source;
         this.location[0] = item.getLatitude();
         this.location[1] = item.getLongitude();
