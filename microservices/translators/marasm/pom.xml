@@ -28,6 +28,11 @@
             <artifactId>json-path</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.p5</groupId>
+            <artifactId>commons</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <properties>
