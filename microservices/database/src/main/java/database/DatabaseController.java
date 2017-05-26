@@ -1,5 +1,7 @@
 package database;
 
+import org.p5.commons.crodis.Crodis;
+import org.p5.commons.crodis.Item;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -25,7 +27,7 @@ public class DatabaseController {
 
     @RequestMapping(method=RequestMethod.PUT)  //dodawanie nowych crodisów
     public int putCrodis(@RequestBody Crodis crodis){
-        for (Crodis.Item item: crodis.getItems()) {
+        for (Item item: crodis.getItems()) {
             CrodisItem crodisItem = new CrodisItem(crodis.getSource(), item);
             mongoOperation.save(crodisItem);
         }
