@@ -13,7 +13,7 @@ public class Item implements Serializable {
     private Map<String, Float> conditions;
 
     // Temperature [Celsius]
-    public static String CONDITION_TEMPERATURE = "temperature";
+    public static final String CONDITION_TEMPERATURE = "temperature";
 
     public float getLatitude() {
         return latitude;

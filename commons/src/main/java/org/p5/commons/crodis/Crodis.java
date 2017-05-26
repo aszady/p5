@@ -15,7 +15,7 @@ public class Crodis implements Serializable {
     private String source;
     private List<Item> items;
 
-    public Crodis(){
+    public Crodis() {
         this.items = new ArrayList<>();
     }
 
@@ -29,7 +29,7 @@ public class Crodis implements Serializable {
         item.setLatitude(lat);
         item.setLongitude(lon);
         item.setRadius(radius);
-        Map<String, Float> clonedConditions = new HashMap<String, Float>();
+        Map<String, Float> clonedConditions = new HashMap<>();
         clonedConditions.putAll(conditions);
         item.setConditions(clonedConditions);
         this.items.add(item);
@@ -38,5 +38,8 @@ public class Crodis implements Serializable {
     public String getSource() {
         return this.source;
     }
-    public List<Item> getItems() { return this.items; }
+
+    public List<Item> getItems() {
+        return this.items;
+    }
 }
