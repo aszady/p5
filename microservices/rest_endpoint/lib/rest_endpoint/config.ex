@@ -1,9 +1,5 @@
 defmodule RestEndpoint.Config do
 
-  def get_logger_address() do
-    get(:logger)
-  end
-
   def get_cache_address() do
     get(:cache)
   end

@@ -22,7 +22,6 @@ defmodule RestEndpoint.Router do
   scope "/api", RestEndpoint do
     pipe_through :api
 
-    post "/geoposition", GeoPositionController, :update
-    post "/weather", WeatherController, :get_weather
+    get "/weather", WeatherController, :get_weather
   end
 end
