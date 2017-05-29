@@ -30,7 +30,7 @@ public class ApiController {
         coordinates.put("longitude", longitude);
         for (String url : translatorUrls) {
             RestTemplate template = new RestTemplate();
-            saveCrodis(template.getForObject(url, Crodis.class, coordinates));
+            saveCrodis(template.getForObject(url + "/location", Crodis.class, coordinates));
         }
     }
 
