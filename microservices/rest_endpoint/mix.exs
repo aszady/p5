@@ -38,6 +38,7 @@ defmodule RestEndpoint.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:httpoison, "~> 0.11.2"},
+     {:distillery, "~> 1.4"},
      {:poison, "~> 2.0"},
      {:cowboy, "~> 1.0"}]
   end
