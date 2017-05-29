@@ -13,6 +13,7 @@
         <module>microservices/database</module>
         <module>microservices/translators/marasm</module>
         <module>microservices/obliczajkas/model1</module>
+        <module>microservices/updater</module>
     </modules>
 
     <build>
