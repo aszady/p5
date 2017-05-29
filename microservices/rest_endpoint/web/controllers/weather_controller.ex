@@ -2,7 +2,7 @@ defmodule RestEndpoint.WeatherController do
   use RestEndpoint.Web, :controller
 
   def get_weather(conn, params) do
-    position = {params["lattitude"], params["longtitude"]}
+    position = {params["latitude"], params["longtitude"]}
     case get_cache(position) do
       nil -> 
         res = calculate_weather(position)
