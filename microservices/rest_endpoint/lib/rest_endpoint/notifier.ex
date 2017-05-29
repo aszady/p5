@@ -7,10 +7,6 @@ defmodule RestEndpoint.Notifier do
   alias RestEndpoint.Http
   alias RestEndpoint.Config
 
-  def notify(subject, data) do
-    GenServer.cast(__MODULE__, {subject, data})
-  end
-
   def get(subject, data) do
     GenServer.call(__MODULE__, {subject, data})
   end
@@ -21,16 +17,6 @@ defmodule RestEndpoint.Notifier do
 
   def init(_args) do
     {:ok, []}
-  end
-
-  def handle_cast({:logger, data}, state) do
-    Http.post(Config.get_logger_address(), data)
-    {:noreply, state}
-  end
-
-  def handle_cast(_, state) do
-    Logger.warn "Invalid request"
-    {:noreply, state}
   end
 
   def handle_call({:cache, position}, _from, state) do
