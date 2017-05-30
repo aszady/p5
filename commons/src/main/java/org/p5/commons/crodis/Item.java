@@ -21,6 +21,10 @@ public class Item implements Serializable {
     // Wind [m/s]
     public static final String CONDITION_WIND = "wind";
 
+    // Air quality: Pollution level based on CAQI value.
+    // Possible values: [1 to 6]. 1 - best air, 6 - worst.
+    public static final String CONDITION_AIR_CAQL = "air_caql";
+
     public float getLatitude() {
         return latitude;
     }
