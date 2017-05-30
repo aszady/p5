@@ -36,7 +36,7 @@ public class Controller {
         return "Greetings from Obliczajka1!";
     }
 
-    @RequestMapping("/get")
+    @RequestMapping("/point")
     public
     @ResponseBody
     Crodis calculate(@RequestParam(value = "latitude") Float latitude,
