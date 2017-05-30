@@ -15,7 +15,8 @@ def mgram_to_crodis_item(mgram, at):
         'radius': 5,
         'conditions': {
             'temperature': mgram.get_temperature(at),
-            'temperature_delta': (mgram.get_temperature(at + timedelta(hours=3)) - mgram.get_temperature(at)) / 3
+            'temperature_delta': (mgram.get_temperature(at + timedelta(hours=3)) - mgram.get_temperature(at)) / 3,
+            'wind': mgram.get_wind(at)
         }
     }
 

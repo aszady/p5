@@ -15,6 +15,12 @@ public class Item implements Serializable {
     // Temperature [Celsius]
     public static final String CONDITION_TEMPERATURE = "temperature";
 
+    // Temperature delta [Celcuis/hour]
+    public static final String CONDITION_TEMPERATURE_DELTA = "temperature_delta";
+
+    // Wind [m/s]
+    public static final String CONDITION_WIND = "wind";
+
     public float getLatitude() {
         return latitude;
     }
