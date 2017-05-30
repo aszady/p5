@@ -1,5 +1,5 @@
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import icmparser.current
 
@@ -10,32 +10,47 @@ def mgram_to_crodis(mgram, at=None):
     if at is None:
         at = datetime.utcnow()
     return {
-        'source': 'icm',
+        'source': 'icm:'+mgram.fdate,
         'items': [
             {
-                'lat': 44,
-                'lon': 44,
-                'radius': 1e9+44,
+                'lat': mgram.lat,
+                'lon': mgram.lon,
+                'radius': 5,
                 'conditions': {
-                    'temperature': mgram.get_temperature(at)
+                    'temperature': mgram.get_temperature(at),
+                    'temperature_delta': (mgram.get_temperature(at + timedelta(hours=3)) - mgram.get_temperature(at)) / 3
                 }
             }
         ]
     }
 
-class GetareaHandler(tornado.web.RequestHandler):
+
+class RestHandler(tornado.web.RequestHandler):
     def set_default_headers(self):
         self.set_header('Content-Type', 'application/json')
 
+
+class PointHandler(RestHandler):
     def get(self):
-        mgram = icmparser.current.CurrentMeteogram(466, 232)
+        lat = float(self.get_query_argument('latitude'))
+        lon = float(self.get_query_argument('longitude'))
+        mgram = icmparser.current.CurrentMeteogram(lat, lon)
+        self.write(json.dumps(mgram_to_crodis(mgram)))
+
+
+class AreaHandler(RestHandler):
+    def get(self):
+        lat = float(self.get_query_argument('latitude'))
+        lon = float(self.get_query_argument('longitude'))
+        mgram = icmparser.current.CurrentMeteogram(lat, lon)
         self.write(json.dumps(mgram_to_crodis(mgram)))
 
 
 class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
-            (r"/get_area", GetareaHandler)
+            (r"/point", PointHandler),
+            (r"/area", AreaHandler)
         ]
         tornado.web.Application.__init__(self, handlers)
 
