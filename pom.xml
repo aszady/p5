@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>commons</module>
+        <module>misc/commons</module>
         <module>microservices/database</module>
         <module>microservices/translators/marasm</module>
         <module>microservices/obliczajkas/model1</module>
