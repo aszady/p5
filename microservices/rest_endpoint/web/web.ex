@@ -18,21 +18,12 @@ defmodule RestEndpoint.Web do
 
   def model do
     quote do
-      use Ecto.Schema
-
-      import Ecto
-      import Ecto.Changeset
-      import Ecto.Query
     end
   end
 
   def controller do
     quote do
       use Phoenix.Controller
-
-      alias RestEndpoint.Repo
-      import Ecto
-      import Ecto.Query
 
       import RestEndpoint.Router.Helpers
       import RestEndpoint.Gettext
@@ -65,9 +56,6 @@ defmodule RestEndpoint.Web do
     quote do
       use Phoenix.Channel
 
-      alias RestEndpoint.Repo
-      import Ecto
-      import Ecto.Query
       import RestEndpoint.Gettext
     end
   end

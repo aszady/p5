@@ -13,8 +13,7 @@ ENV REST_RUNTIME_DEPS "git \
                        curl \
                        elixir=1.3.3-1 \
                        npm=3.5.2-0ubuntu4 \
-                       esl-erlang=1:18.3.4 \
-                       docker-engine=1.12.2-0~xenial"
+                       esl-erlang=1:18.3.4"
 
 
 RUN curl -O https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb \
