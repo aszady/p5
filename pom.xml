@@ -14,6 +14,7 @@
         <module>microservices/translators/marasm</module>
         <module>microservices/obliczajkas/model1</module>
         <module>microservices/updater</module>
+        <module>microservices/eureka</module>
     </modules>
 
     <build>
