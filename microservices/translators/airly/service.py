@@ -9,8 +9,8 @@ from airly_client import AirlyClient
 
 def airly_to_crodis_item(airly_item):
     return {
-        'lat': airly_item['location']['latitude'],
-        'lon': airly_item['location']['longitude'],
+        'latitude': airly_item['location']['latitude'],
+        'longitude': airly_item['location']['longitude'],
         'radius': 1,
         'conditions': {
             'air_caql': airly_item['pollutionLevel']

@@ -10,8 +10,8 @@ import tornado.web
 
 def mgram_to_crodis_item(mgram, at):
     return {
-        'lat': mgram.lat,
-        'lon': mgram.lon,
+        'latitude': mgram.lat,
+        'longitude': mgram.lon,
         'radius': 5,
         'conditions': {
             'temperature': mgram.get_temperature(at),
