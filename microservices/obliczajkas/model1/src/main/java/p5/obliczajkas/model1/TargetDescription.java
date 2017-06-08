@@ -1,6 +1,6 @@
 package p5.obliczajkas.model1;
 
-public class TargetDescription {
+public class TargetDescription implements LatLonItem {
     float latitude;
     float longitude;
 
