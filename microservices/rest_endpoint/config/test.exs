@@ -8,12 +8,3 @@ config :rest_endpoint, RestEndpoint.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
-
-# Configure your database
-config :rest_endpoint, RestEndpoint.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "rest_endpoint_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox

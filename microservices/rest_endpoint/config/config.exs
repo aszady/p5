@@ -7,7 +7,6 @@ use Mix.Config
 
 # General application configuration
 config :rest_endpoint,
-  ecto_repos: [RestEndpoint.Repo],
   calculator: "http://calculator:8083",
   logger: "http://logger:8082",
   cache: "http://cache:8081"
