@@ -1,13 +1,13 @@
 package org.p5.updater.controllers;
 
 import org.p5.commons.crodis.Crodis;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,11 +15,18 @@ import java.util.Map;
 @RestController
 public class ApiController {
 
+    private final DiscoveryClient discoveryClient;
+
     @Value("${p5.yacs}")
-    private String yacsUrl;
+    private String yacsName;
 
     @Value("${p5.translators}")
     private List<String> translatorUrls;
+
+    @Autowired
+    public ApiController(DiscoveryClient discoveryClient) {
+        this.discoveryClient = discoveryClient;
+    }
 
 
     @RequestMapping(value = "/location", method = RequestMethod.POST)
@@ -36,6 +43,6 @@ public class ApiController {
 
     private void saveCrodis(Crodis crodis) {
         RestTemplate template = new RestTemplate();
-        template.put(yacsUrl, crodis);
+        template.put(discoveryClient.getInstances(yacsName).get(0).getUri(), crodis);
     }
 }
