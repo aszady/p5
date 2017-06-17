@@ -36,8 +36,9 @@ Services run on following ports:
 
 **API**
 * Please call:
-`GET /area?lat={}&lon={}&radius={}`
+`GET /area?latitude={}&longitude={}&radius={}`
 – to get your *Crodis*
+Note that `latitude` and `longitude`, and `radius` [in km] are just a hint for the Translator. It may, on its own discretion, return any *Crodis*.
 
 
 

@@ -42,7 +42,7 @@ public class Controller {
         return "Greetings from Marasm!";
     }
 
-	@RequestMapping("/get_area")
+	@RequestMapping("/area")
 	public @ResponseBody Crodis area() {
 		return this.crodis;
 	}
