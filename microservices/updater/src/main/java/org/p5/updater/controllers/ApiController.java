@@ -11,11 +11,13 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @RestController
 public class ApiController {
 
     private final DiscoveryClient discoveryClient;
+    private static Random random = new Random();
 
     @Value("${p5.crodis.radius}")
     private double radius;
@@ -34,15 +36,15 @@ public class ApiController {
     @RequestMapping(value = "/location", method = RequestMethod.POST)
     public void calculateLocation(@RequestParam double latitude,
                                   @RequestParam double longitude) {
-        Map<String, Double> coordinates = new HashMap<>(2);
+        Map<String, Double> coordinates = new HashMap<>(3);
         coordinates.put("latitude", latitude);
         coordinates.put("longitude", longitude);
         coordinates.put("radius", radius);
+        RestTemplate template = new RestTemplate();
         for (String name : translatorNames) {
-            RestTemplate template = new RestTemplate();
             List<ServiceInstance> serviceInstances = discoveryClient.getInstances(name);
             if (serviceInstances.size() != 0) {
-                String url = serviceInstances.get(0).getUri() + "/area";
+                String url = serviceInstances.get(random.nextInt(serviceInstances.size())).getUri() + "/area";
 //                String url = "http://localhost:4412/area";
                 Crodis crodis = template.getForObject(url, Crodis.class, coordinates);
                 saveCrodis(crodis);
@@ -54,7 +56,7 @@ public class ApiController {
         RestTemplate template = new RestTemplate();
         List<ServiceInstance> serviceInstances = discoveryClient.getInstances(yacsName);
         if (serviceInstances.size() != 0) {
-            template.put(serviceInstances.get(0).getUri(), crodis);
+            template.put(serviceInstances.get(random.nextInt(serviceInstances.size())).getUri(), crodis);
         }
     }
 }
