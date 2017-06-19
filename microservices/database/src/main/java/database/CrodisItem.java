@@ -2,10 +2,12 @@ package database;
 /**
  * Created by Mefju on 25.05.2017.
  */
+import org.bouncycastle.asn1.dvcs.Data;
 import org.p5.commons.crodis.Item;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
 import java.util.Map;
 
 @Document(collection = "crodis")
@@ -18,6 +20,7 @@ public class CrodisItem {
     float[] location = new float[2];
     float radius;
     Map<String, Float> conditions;
+    Date timeOfDeliver;
 
     CrodisItem(){}
 
@@ -67,5 +70,13 @@ public class CrodisItem {
 
     public void setConditions(Map<String, Float> conditions) {
         this.conditions = conditions;
+    }
+
+    public Date getTimeOfDeliver() {
+        return timeOfDeliver;
+    }
+
+    public void setTimeOfDeliver(Date timeOfDeliver) {
+        this.timeOfDeliver = timeOfDeliver;
     }
 }
