@@ -16,7 +16,7 @@ public class UpdaterApplication {
 	}
 
     /**
-     * Required to read translator urls from list in application.properties
+     * Required to read translator names from list in application.properties
      */
 	@Bean public ConversionService conversionService() {
 	    return new DefaultConversionService();
