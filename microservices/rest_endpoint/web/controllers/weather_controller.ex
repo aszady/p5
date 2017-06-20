@@ -2,24 +2,9 @@ defmodule RestEndpoint.WeatherController do
   use RestEndpoint.Web, :controller
 
   def get_weather(conn, params) do
-    position = {params["latitude"], params["longtitude"]}
-    case get_cache(position) do
-      nil -> 
-        res = calculate_weather(position)
-        conn
-        |> json(res)
-      {:error, reason} ->
-        conn
-        |> put_status(500)
-        |> json(%{result: :error, message: inspect(reason)}) 
-      val ->
-        conn
-        |> json(%{result: val})
-    end
-  end
-
-  defp get_cache(position) do
-    RestEndpoint.Notifier.get(:cache, position)
+    res = calculate_weather(params)
+    conn
+    |> json(res)
   end
 
   defp calculate_weather(position) do
