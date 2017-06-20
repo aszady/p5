@@ -20,24 +20,12 @@ defmodule RestEndpoint.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias RestEndpoint.Repo
-      import Ecto
-      import Ecto.Changeset
-      import Ecto.Query
-
-
       # The default endpoint for testing
       @endpoint RestEndpoint.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(RestEndpoint.Repo)
-
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(RestEndpoint.Repo, {:shared, self()})
-    end
-
     :ok
   end
 end

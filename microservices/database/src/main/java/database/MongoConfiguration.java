@@ -16,7 +16,7 @@ public class MongoConfiguration extends AbstractMongoConfiguration {
 
     @Bean
     public Mongo mongo() throws Exception {
-       return new MongoClient("localhost");
+       return new MongoClient("mongo");
     }
 
 }

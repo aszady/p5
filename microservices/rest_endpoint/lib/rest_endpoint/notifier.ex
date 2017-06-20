@@ -19,18 +19,11 @@ defmodule RestEndpoint.Notifier do
     {:ok, []}
   end
 
-  def handle_call({:cache, position}, _from, state) do
-    res = Http.post(Config.get_cache_address(), position)
-    res2 = case res do 
-             {:error, _} -> nil
-             val -> val
-           end
-    {:reply, res2, state}
-  end
-
   def handle_call({:calculator, data}, _from, state) do
-    res = Http.post(Config.get_calculator_address(), data)
-    {:reply, res, state}
+    base_url = Config.get_calculator_address()
+    query = URI.encode_query(data)
+    url = URI.merge(base_url, "/point?" <> query) |> to_string
+    {:reply, Http.get(url), state}
   end
 
   def handle_call(_, _, state) do

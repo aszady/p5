@@ -7,9 +7,8 @@ use Mix.Config
 
 # General application configuration
 config :rest_endpoint,
-  calculator: "http://calculator:8083",
-  logger: "http://logger:8082",
-  cache: "http://cache:8081"
+  eureka: "http://eureka:5042/eureka",
+  calculator_name: "obliczajkas-model1"
 
 # Configures the endpoint
 config :rest_endpoint, RestEndpoint.Endpoint,
