@@ -1,8 +1,10 @@
+import argparse
 import json
 from datetime import datetime, timedelta
 
 import icmparser.coords
 import icmparser.current
+from eureka.client import EurekaClient
 
 from tornado.ioloop import IOLoop
 import tornado.web
@@ -62,9 +64,33 @@ class Application(tornado.web.Application):
         tornado.web.Application.__init__(self, handlers)
 
 
+def register_eureka(args):
+    ec = EurekaClient(
+        "icm",
+        eureka_url='http://{}:5042/eureka/'.format(args.eureka_host),
+        host_name=args.host,
+        port=args.port,
+        secure_port=443,
+        home_page_url='http://{}:{}/'.format(args.host, args.port)
+    )
+
+    ec.register("UP")
+    ec.heartbeat()
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="ICM service")
+    parser.add_argument('--host', required=True)
+    parser.add_argument('--port', default=4412, type=int)
+    parser.add_argument('--eureka_host', default='localhost')
+    return parser.parse_args()
+
 def main():
+    args = parse_args()
+
+    register_eureka(args)
     app = Application()
-    app.listen(4412)
+    app.listen(args.port, args.host)
     IOLoop.instance().start()
 
 if __name__ == '__main__':
