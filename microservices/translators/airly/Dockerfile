@@ -9,4 +9,4 @@ WORKDIR /tmp/python-eureka
 RUN ls
 RUN python3 setup.py install
 WORKDIR /
-CMD python3 /opt/airly/service.py --host `cat /etc/hosts | tail -n1 | awk '{print $1}'` --eureka_host eureka
+CMD python3 /opt/airly/service.py --host `cat /etc/hosts | tail -n1 | awk '{print $1}'` --eureka_host eureka --airly_token=$AIRLY_TOKEN

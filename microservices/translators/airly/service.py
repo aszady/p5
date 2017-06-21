@@ -76,13 +76,14 @@ def parse_args():
     parser.add_argument('--host', required=True)
     parser.add_argument('--port', default=4411, type=int)
     parser.add_argument('--eureka_host', default='localhost')
+    parser.add_argument('--airly_token', required=True)
     return parser.parse_args()
 
 def main():
     args = parse_args()
 
     register_eureka(args)
-    airly_client = AirlyClient('fd6c7a87271c402ea38bd5dea38291aa')  # How nasty is that.
+    airly_client = AirlyClient(args.airly_token)
     app = Application(airly_client)
     app.listen(args.port, args.host)
     IOLoop.instance().start()
