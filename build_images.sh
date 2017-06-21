@@ -18,12 +18,9 @@ buildimg p5_translator_airly microservices/translators/airly
 buildimg p5_translator_icm microservices/translators/icm
 
 # Erlang – nice and clean
-pushd microservices/rest_endpoint
-tar czf /tmp/rest_endpoint.tar.gz .
-popd
-mv /tmp/rest_endpoint.tar.gz microservices/rest_endpoint/docker
-buildimg p5_rest microservices/rest_endpoint/docker
-
+cd microservices/rest_endpoint/
+./build.sh
+cd $OLDPWD
 # Java – ...
 mvn package
 

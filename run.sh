@@ -29,16 +29,16 @@ run_p5container() {
 }
 
 run_container mongo mongo "" "--smallfiles"
-run_p5container eureka
+run_p5container eureka -p 5042
 sleep 10
-run_p5container obliczajka
-run_p5container database
-run_p5container updater
+run_p5container obliczajka -p 4421
+run_p5container database -p 4200
+run_p5container updater -p 5001
 run_p5container rest -p 4000:4000
-run_p5container translator_marasm
-run_p5container translator_airly -e AIRLY_TOKEN
-run_p5container translator_icm
+run_p5container translator_marasm -p 4413
+run_p5container translator_airly -e AIRLY_TOKEN -p 4411
+run_p5container translator_icm -p 4412
 
 docker ps
 
-docker exec -it rest ./home/root/bin/rest_endpoint start
+docker exec -it rest ./home/root/bin/rest_endpoint foreground
