@@ -1,3 +1,0 @@
-[submodule "microservices/translators/icm/icmparser"]
-	path = microservices/translators/icm/icmparser
-	url = https://github.com/aszady/icmparser
