@@ -35,7 +35,7 @@ public class UpdaterController {
         this.restTemplate = restTemplate;
     }
 
-    @RequestMapping(value = "/location", method = RequestMethod.POST)
+    @RequestMapping(value = "/", method = RequestMethod.POST)
     public void calculateLocation(@RequestParam double latitude,
                                   @RequestParam double longitude) {
         Map<String, Double> coordinates = new HashMap<>(3);

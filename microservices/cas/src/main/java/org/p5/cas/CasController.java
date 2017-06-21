@@ -31,7 +31,7 @@ public class CasController {
         this.restTemplate = restTemplate;
     }
 
-    @RequestMapping(value = "/location", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public Crodis getLocation(@RequestParam double latitude,
                               @RequestParam double longitude) {
         Map<String, Double> coordinates = new HashMap<>(2);
