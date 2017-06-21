@@ -16,17 +16,19 @@ done
 run_container() {
   NAME="$1"
   IMG_NAME="$2"
+  DOCKER_PARAMS="$3"
+  EP_PARAMS="$4"
   shift;shift
-  docker run -dt --net p5 -h $NAME --name $NAME $IMG_NAME $*
+  docker run -idt --net p5 -h $NAME --name $NAME $DOCKER_PARAMS $IMG_NAME $EP_PARAMS
 }
 
 run_p5container() {
   NAME="$1"
   shift
-  run_container $NAME p5_$NAME $*
+  run_container $NAME p5_$NAME "$*" ""
 }
 
-run_container mongo mongo --smallfiles
+run_container mongo mongo "" "--smallfiles"
 run_p5container eureka
 sleep 10
 run_p5container obliczajka
@@ -39,4 +41,4 @@ run_p5container translator_icm
 
 docker ps
 
-docker exec -it rest ./home/root/bin/rest_endpoint foreground
+docker exec -it rest ./home/root/bin/rest_endpoint start
