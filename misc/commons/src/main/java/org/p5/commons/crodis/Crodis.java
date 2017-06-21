@@ -42,4 +42,8 @@ public class Crodis implements Serializable {
     public List<Item> getItems() {
         return this.items;
     }
+
+    public boolean isEmpty() {
+        return items.size() == 0;
+    }
 }

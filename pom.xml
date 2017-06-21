@@ -15,6 +15,7 @@
         <module>microservices/obliczajkas/model1</module>
         <module>microservices/updater</module>
         <module>microservices/eureka</module>
+        <module>microservices/cas</module>
     </modules>
 
     <build>
