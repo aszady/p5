@@ -38,7 +38,7 @@ run_p5container rest -p 4000:4000
 run_p5container translator_marasm -p 4413
 run_p5container translator_airly -e AIRLY_TOKEN -p 4411
 run_p5container translator_icm -p 4412
-
+run_p5container cas -p 5002
 docker ps
 
 docker exec -it rest ./home/root/bin/rest_endpoint foreground

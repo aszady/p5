@@ -27,7 +27,7 @@ mvn package
 cp microservices/translators/marasm/{target/translator-marasm-0.1.2.jar,src/main/docker}
 buildimg p5_translator_marasm microservices/translators/marasm/src/main/docker
 
-for MNAME in eureka updater database; do
+for MNAME in eureka updater database cas; do
   cp microservices/$MNAME/{target/$MNAME-0.0.1-SNAPSHOT.jar,src/main/docker}
   buildimg p5_$MNAME microservices/$MNAME/src/main/docker
 done
