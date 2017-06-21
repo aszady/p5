@@ -3,9 +3,7 @@ package org.p5.updater;
 import org.p5.commons.crodis.Crodis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,13 +15,8 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RibbonClient(name = "updater", configuration = UpdaterApplication.class)
+@RibbonClient(name = "updater", configuration = UpdaterConfiguration.class)
 public class UpdaterController {
-    @Bean
-    @LoadBalanced
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
 
     private final RestTemplate restTemplate;
 

@@ -17,7 +17,6 @@ import java.util.Map;
 @RibbonClient(name = "cas", configuration = CasConfiguration.class)
 public class CasController {
 
-
     private final RestTemplate restTemplate;
 
     @Value("${p5.yacs}")
@@ -41,7 +40,7 @@ public class CasController {
 
         String yacsUrl = "http://" + yacsName + "/";
         Crodis crodis = restTemplate.getForObject(yacsUrl, Crodis.class, coordinates);
-        if (crodis == null) {
+        if (crodis.isEmpty()) {
             restTemplate.postForLocation("http://" + updaterName + "location", null, coordinates);
             crodis = restTemplate.getForObject(yacsUrl, Crodis.class, coordinates);
         }
