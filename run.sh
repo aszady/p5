@@ -26,7 +26,7 @@ run_p5container() {
   run_container $NAME p5_$NAME $*
 }
 
-run_container mongo mongo
+run_container mongo mongo --smallfiles
 run_p5container eureka
 sleep 10
 run_p5container obliczajka
@@ -36,5 +36,7 @@ run_p5container rest -p 4000:4000
 run_p5container translator_marasm
 run_p5container translator_airly -e AIRLY_TOKEN
 run_p5container translator_icm
+
+docker ps
 
 docker exec -it rest ./home/root/bin/rest_endpoint foreground
