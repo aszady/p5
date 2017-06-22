@@ -38,10 +38,10 @@ public class CasController {
         coordinates.put("latitude", latitude);
         coordinates.put("longitude", longitude);
 
-        String yacsUrl = "http://" + yacsName + "/";
+        String yacsUrl = "http://" + yacsName + "/?latitude={latitude}&longitude={longitude}";
         Crodis crodis = restTemplate.getForObject(yacsUrl, Crodis.class, coordinates);
         if (crodis.isEmpty()) {
-            restTemplate.postForLocation("http://" + updaterName + "/location", null, coordinates);
+            restTemplate.postForLocation("http://" + updaterName + "/location?latitude={latitude}&longitude={longitude}", null, coordinates);
             crodis = restTemplate.getForObject(yacsUrl, Crodis.class, coordinates);
         }
         return crodis;

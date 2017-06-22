@@ -67,6 +67,7 @@ class Application(tornado.web.Application):
 def register_eureka(args):
     ec = EurekaClient(
         "icm",
+        ip_addr=args.host,
         eureka_url='http://{}:5042/eureka/'.format(args.eureka_host),
         host_name=args.host,
         port=args.port,

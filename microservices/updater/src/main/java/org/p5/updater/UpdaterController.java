@@ -35,7 +35,7 @@ public class UpdaterController {
         this.restTemplate = restTemplate;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "/location", method = RequestMethod.POST)
     public void calculateLocation(@RequestParam double latitude,
                                   @RequestParam double longitude) {
         Map<String, Double> coordinates = new HashMap<>(3);
@@ -43,7 +43,7 @@ public class UpdaterController {
         coordinates.put("longitude", longitude);
         coordinates.put("radius", radius);
         for (String name : translatorNames) {
-            String url = "http://" + name + "/area";
+            String url = "http://" + name + "/area?latitude={latitude}&longitude={longitude}&radius={radius}";
             Crodis crodis = restTemplate.getForObject(url, Crodis.class, coordinates);
             saveCrodis(crodis);
         }
