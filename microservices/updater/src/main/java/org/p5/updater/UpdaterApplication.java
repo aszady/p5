@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@RibbonClient(name = "updater", configuration = UpdaterConfiguration.class)
+//@RibbonClient(name = "updater", configuration = UpdaterConfiguration.class)
 public class UpdaterApplication {
 
 	/**
@@ -22,11 +22,11 @@ public class UpdaterApplication {
 		return new DefaultConversionService();
 	}
 
-	@Bean
-	@LoadBalanced
-	public RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
+//	@Bean
+//	@LoadBalanced
+//	public RestTemplate restTemplate() {
+//		return new RestTemplate();
+//	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(UpdaterApplication.class, args);
