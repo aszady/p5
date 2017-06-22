@@ -9,7 +9,7 @@ if [ ! "$AIRLY_TOKEN" ]; then
 fi
 
 for CONTAINER_NAME in eureka obliczajka database updater rest\
-    translator_marasm translator_airly translator_icm mongo; do
+    translator_marasm translator_airly translator_icm mongo cas; do
   docker rm $CONTAINER_NAME
 done
 
@@ -30,7 +30,7 @@ run_p5container() {
 
 run_container mongo mongo "" "--smallfiles"
 run_p5container eureka -p 5042
-sleep 10
+sleep 20
 run_p5container obliczajka -p 4421
 run_p5container database -p 4200
 run_p5container updater -p 5001

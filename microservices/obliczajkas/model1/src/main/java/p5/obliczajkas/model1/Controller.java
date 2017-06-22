@@ -40,9 +40,8 @@ public class Controller {
     }
 
     private Crodis fetchCrodis(float latitude, float longitude) {
-        return new RestTemplate().getForObject(
-                yacsUrl + "/?latitude=" + latitude + "&longitude=" + longitude,
-                Crodis.class);
+		String url = "http://" + yacsUrl + "/?latitude=" + latitude + "&longitude=" + longitude;
+        return new RestTemplate().getForObject(url, Crodis.class);
     }
 
 	@RequestMapping("/point")
