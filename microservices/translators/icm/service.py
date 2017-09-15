@@ -69,7 +69,7 @@ def register_eureka(args):
         "icm",
         ip_addr=args.host,
         eureka_url='http://{}:5042/eureka/'.format(args.eureka_host),
-        host_name=args.host,
+        host_name='icm',
         port=args.port,
         secure_port=443,
         home_page_url='http://{}:{}/'.format(args.host, args.port)
